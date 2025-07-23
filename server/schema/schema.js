@@ -2,6 +2,14 @@ const graphql = require('graphql')
 
 const {GraphQLObjectType, GraphQLstring, GraphQLSchema} = graphql;
 
+// Dummy Data
+
+var books = [
+    {name: 'Maid Sama', genre: 'romcom', id: '1'},
+    {name: 'Demon Slayer', genre: 'action', id: '2'},
+    {name: 'HxH', genre: 'Adventure', id: '3'}
+]
+
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
@@ -27,6 +35,7 @@ const RootQuery = new GraphQLObjectType({
             args: {type: GraphQLstring},
             resolve(parent, args) {
                 // code to get data from DB 
+                return books.find(book => book.id === args.id)
             }
         }
     }
