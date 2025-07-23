@@ -10,3 +10,21 @@ const BookType = new GraphQLObjectType({
         genre: {type: GraphQLstring}
     })
 })
+
+const AuthorType = new GraphQLObjectType({
+    name: 'Author',
+    fields: () => ({
+        name: {type: GraphQLstring},
+        age: {type: GraphQLstring}
+    })
+})
+
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+        book: {
+            type: BookType,
+            args: {type: GraphQLstring}
+        }
+    }
+})
