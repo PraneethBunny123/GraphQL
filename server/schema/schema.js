@@ -5,14 +5,15 @@ const {
     GraphQLString, 
     GraphQLSchema,
     GraphQLID,
+    GraphQLInt
 } = graphql;
 
 // Dummy Data
 
 var books = [
-    {name: 'Maid Sama', genre: 'romcom', id: '1'},
-    {name: 'Demon Slayer', genre: 'action', id: '2'},
-    {name: 'HxH', genre: 'Adventure', id: '3'}
+    {name: 'Maid Sama', genre: 'romcom', id: '1', authorId: '1'},
+    {name: 'Demon Slayer', genre: 'action', id: '2', authorId: '2'},
+    {name: 'HxH', genre: 'Adventure', id: '3', authorId: '3'}
 ]
 
 var authors = [
@@ -35,7 +36,7 @@ const AuthorType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        age: {type: GraphQLID}
+        age: {type: GraphQLInt}
     })
 })
 
