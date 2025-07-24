@@ -13,11 +13,12 @@ const {
 var books = [
     {name: 'Maid Sama', genre: 'romcom', id: '1', authorId: '1'},
     {name: 'Demon Slayer', genre: 'action', id: '2', authorId: '2'},
-    {name: 'HxH', genre: 'Adventure', id: '3', authorId: '3'}
+    {name: 'HxH', genre: 'Adventure', id: '3', authorId: '3'},
+    {name: 'One Piece', genre: 'Peak', id: '4', authorId: '1'}
 ]
 
 var authors = [
-    {name: 'Zoro', age: 42, id: '1'},
+    {name: 'Luffy', age: 42, id: '1'},
     {name: 'Tanjiro', age: 27, id: '2'},
     {name: 'Gon', age: 33, id: '3'}
 ]
@@ -27,7 +28,13 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        genre: {type: GraphQLString}
+        genre: {type: GraphQLString},
+        author: {
+            type: AuthorType,
+            resolve(parent, args) {
+                return authors.find(author => author.id == parent.authorId )
+            }
+        }
     })
 })
 
@@ -48,7 +55,6 @@ const RootQuery = new GraphQLObjectType({
             args: {id: {type: GraphQLID}},
             resolve(parent, args) {
                 // code to get data from DB 
-                console.log(typeof(args.id))
                 return books.find(book => book.id == args.id)
             }
         },
