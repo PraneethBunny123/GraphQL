@@ -14,7 +14,11 @@ var books = [
     {name: 'Maid Sama', genre: 'romcom', id: '1', authorId: '1'},
     {name: 'Demon Slayer', genre: 'action', id: '2', authorId: '2'},
     {name: 'HxH', genre: 'Adventure', id: '3', authorId: '3'},
-    {name: 'One Piece', genre: 'Peak', id: '4', authorId: '1'}
+    {name: 'One Piece', genre: 'Peak', id: '4', authorId: '1'},
+    {name: 'JJK', genre: 'Sorcery', id: '5', authorId: '3'},
+    {name: 'Haikyuu', genre: 'Sports', id: '6', authorId: '1'},
+    {name: 'Blue Lock', genre: 'Ego', id: '7', authorId: '3'},
+    {name: 'Hells Paradise', genre: 'Horror', id: '8', authorId: '2'},
 ]
 
 var authors = [
