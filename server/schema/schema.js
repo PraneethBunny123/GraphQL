@@ -4,7 +4,7 @@ const {
     GraphQLObjectType, 
     GraphQLString, 
     GraphQLSchema,
-    GraphQLID
+    GraphQLID,
 } = graphql;
 
 // Dummy Data
@@ -15,12 +15,27 @@ var books = [
     {name: 'HxH', genre: 'Adventure', id: '3'}
 ]
 
+var authors = [
+    {name: 'Zoro', age: 42, id: '1'},
+    {name: 'Tanjiro', age: 27, id: '2'},
+    {name: 'Gon', age: 33, id: '3'}
+]
+
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
         genre: {type: GraphQLString}
+    })
+})
+
+const AuthorType = new GraphQLObjectType({
+    name: 'Author',
+    fields: () => ({
+        id: {type: GraphQLID},
+        name: {type: GraphQLString},
+        age: {type: GraphQLID}
     })
 })
 
@@ -34,6 +49,13 @@ const RootQuery = new GraphQLObjectType({
                 // code to get data from DB 
                 console.log(typeof(args.id))
                 return books.find(book => book.id == args.id)
+            }
+        },
+        author: {
+            type: AuthorType,
+            args: {id: {type: GraphQLID}},
+            resolve(parent, args) {
+                return authors.find(author => author.id === args.id)
             }
         }
     }
