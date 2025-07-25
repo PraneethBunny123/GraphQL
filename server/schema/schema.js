@@ -108,7 +108,7 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
-        addAuthor: {
+        addAuthor: { 
             type: AuthorType,
             args: {
                 name: {type: GraphQLString},
@@ -126,5 +126,6 @@ const Mutation = new GraphQLObjectType({
 })
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation:Mutation
 })
