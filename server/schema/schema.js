@@ -29,9 +29,9 @@ const {
 // ]
 
 // var authors = [
-//     {name: 'Luffy', age: 42, id: '1'},
-//     {name: 'Tanjiro', age: 27, id: '2'},
-//     {name: 'Gon', age: 33, id: '3'}
+//     {name: 'Luffy', age: 42, id: '1'}, //6883eea448269ec6c8152091
+//     {name: 'Tanjiro', age: 27, id: '2'}, //6883ee9848269ec6c815208f
+//     {name: 'Gon', age: 33, id: '3'} //6883eebf48269ec6c8152093
 // ]
 
 ////////////////////////////////////////////////////////////
@@ -120,6 +120,22 @@ const Mutation = new GraphQLObjectType({
                     age: args.age
                 })
                 return author.save()
+            }
+        },
+        addBook: {
+            type: BookType,
+            args: {
+                name: {type: GraphQLString},
+                genre: {type: GraphQLString},
+                authorId: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                let book = new Book({
+                    name: args.name,
+                    genre: args.genre,
+                    authorId: args.authorId
+                })
+                return book.save()
             }
         }
     }
