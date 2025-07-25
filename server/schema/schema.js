@@ -6,7 +6,7 @@ const Author = require('../models/author');
 
 const {
     GraphQLObjectType, 
-    GraphQLString, 
+    GraphQLString,  
     GraphQLSchema,
     GraphQLID,
     GraphQLInt,
@@ -36,6 +36,7 @@ const {
 
 ////////////////////////////////////////////////////////////
 
+//BookType
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
@@ -51,6 +52,8 @@ const BookType = new GraphQLObjectType({
     })
 })
 
+
+//AuthorType
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: () => ({
@@ -66,6 +69,8 @@ const AuthorType = new GraphQLObjectType({
     })
 })
 
+
+//Root Query
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -94,6 +99,27 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(AuthorType),
             resolve(parent, args) {
                 // return authors
+            }
+        }
+    }
+})
+
+//mutation (add data to database)
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addAuthor: {
+            type: AuthorType,
+            args: {
+                name: {type: GraphQLString},
+                age: {type: GraphQLInt}
+            },
+            resolve(parent, args) {
+                let author = new Author({
+                    name: args.name,
+                    age: args.age
+                })
+                author.save()
             }
         }
     }
