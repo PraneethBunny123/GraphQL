@@ -69,6 +69,7 @@ const AuthorType = new GraphQLObjectType({
                 // code to get from dummy data
                 // return books.filter(book => book.authorId === parent.id)
                 // code to get from mongodb
+                return Book.find({authorId: parent.id})
             }
         }
     })
@@ -86,6 +87,7 @@ const RootQuery = new GraphQLObjectType({
                 // code to get from dummy data
                 // return books.find(book => book.id == args.id)
                 // code to get from mongodb
+                return Book.findById(args.id)
             }
         },
         author: {
@@ -94,7 +96,8 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get from dummy data
                 // return authors.find(author => author.id === args.id)
-                
+                // code to get from mongodb
+                return Author.findById(args.id)
             }
         },
         books: {
@@ -102,6 +105,8 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get from dummy data
                 // return books
+                // code to get from mongodb
+                return Book.find({})
             }
         },
         authors: {
@@ -109,6 +114,8 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 // code to get from dummy data
                 // return authors
+                // code to get from mongodb
+                return Author.find({})
             }
         }
     }
