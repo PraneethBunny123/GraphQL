@@ -1,12 +1,29 @@
 import { useQuery } from "@apollo/client"
 import { getAuthorsQuery } from "../queries/queries"
+import { useState } from "react"
 
 export default function AddBook() {
     const {loading, error, data} = useQuery(getAuthorsQuery)
 
+    const [formData, setFormData] = useState({
+        name: '',
+        genre: '',
+        authorId: ''
+    })
+
+    function handleOnChange(e) {
+        const {name, value} = e.target;
+        setFormData(prevState => ({...prevState, [name]: value}))
+    }
     
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(formData)
+        setFormData({
+            name: '',
+            genre: '',
+            authorId: ''
+        })
     }
 
     return (
@@ -16,6 +33,9 @@ export default function AddBook() {
                 <input
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleOnChange}
+                    required
                 />
             </div>
 
@@ -24,12 +44,20 @@ export default function AddBook() {
                 <input
                     type="text"
                     name="genre"
+                    value={formData.genre}
+                    onChange={handleOnChange}
+                    required
                 />
             </div>
 
             <div>
                 <label>Author:</label><br />
-                <select name="role">
+                <select 
+                    name="authorId"
+                    value={formData.authorId}
+                    onChange={handleOnChange}  
+                    required  
+                >
                     <option value="">-- Select Author --</option>
                     {loading && <option>Loading Authors...</option>}
                     {!loading && data.authors.map(author => (
