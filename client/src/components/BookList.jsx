@@ -1,18 +1,9 @@
-import { useQuery, gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import AddBook from "./AddBook"
-
-export const getBooks = gql`
-    query {
-        books {
-            name
-            genre
-            id
-        }
-    }
-`
+import { getBooksQuery } from "../queries/queries"
 
 export default function BookList() {
-    const {loading, error, data} = useQuery(getBooks)
+    const {loading, error, data} = useQuery(getBooksQuery)
 
     if(loading) {
         return <p>Loading...</p>
