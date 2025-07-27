@@ -10,7 +10,8 @@ export const getAuthorsQuery = gql`
 `
 
 export default function AddBook() {
-    const {data} = useQuery(getAuthorsQuery)
+    const {loading, error, data} = useQuery(getAuthorsQuery)
+
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -38,6 +39,10 @@ export default function AddBook() {
                 <label>Author:</label><br />
                 <select name="role">
                     <option value="">-- Select Author --</option>
+                    {loading && <option>Loading Authors...</option>}
+                    {!loading && data.authors.map(author => (
+                        <option key={author.id} value={author.id}>{author.name}</option>
+                    ))}
                 </select>
             </div>
 
