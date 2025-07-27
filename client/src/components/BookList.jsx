@@ -1,10 +1,12 @@
 import { useQuery, gql } from "@apollo/client"
+import AddBook from "./AddBook"
 
 export const getBooks = gql`
     query {
-        authors {
+        books {
             name
-            age
+            genre
+            id
         }
     }
 `
@@ -23,8 +25,8 @@ export default function BookList() {
     return (
         <div>
             <ul>
-                {data.authors.map((book, index) => (
-                    <li key={index}>{book.name}</li>
+                {data.books.map(book => (
+                    <li key={book.id}>{book.name}</li>
                 ))}
             </ul>
         </div>
