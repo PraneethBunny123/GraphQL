@@ -7,12 +7,6 @@ const mongoose = require('mongoose')
 
 const app = express()
 
-// connect to mongodb atlas
-// mongoose.connect('mongodb+srv://bunny:bunny@cluster0.xp1gj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
-// mongoose.connection.once('open', () => {
-//     console.log('connected to database')
-// })
-
 mongoose.connect(process.env.MONGO_URI)
 mongoose.connection.once('open', () => {
     console.log('database connection')
