@@ -15,7 +15,7 @@ export default function BookDetails({id}) {
 
     return (
         <div>
-            <p>{data.book.name}</p>
+            <h3>{data.book.name}</h3>
             <p>{data.book.genre}</p>
             <p>{data.book.author.name}</p>
             <p>All books by this author:</p>
