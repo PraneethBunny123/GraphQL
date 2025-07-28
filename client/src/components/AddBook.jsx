@@ -1,11 +1,11 @@
 import { useQuery, useMutation } from "@apollo/client"
-import { getAuthorsQuery, addBookMutation } from "../queries/queries"
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from "../queries/queries"
 import { useState } from "react"
 
 export default function AddBook() {
     const {loading, error, data} = useQuery(getAuthorsQuery)
 
-    const [addBook, {data: addBookData, loading: addBookLoading, error: addBookError}] = useMutation(addBookMutation)
+    const [addBook, {data: addBookData, loading: addBookLoading, error: addBookError}] = useMutation(addBookMutation, {refetchQueries: [getBooksQuery]})
 
     const [formData, setFormData] = useState({
         name: '',

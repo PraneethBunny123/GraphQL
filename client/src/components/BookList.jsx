@@ -1,5 +1,4 @@
 import { useQuery } from "@apollo/client"
-import AddBook from "./AddBook"
 import { getBooksQuery } from "../queries/queries"
 
 export default function BookList() {
