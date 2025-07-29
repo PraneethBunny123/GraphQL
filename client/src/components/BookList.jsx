@@ -21,7 +21,7 @@ export default function BookList() {
 
     return (
         <div className="w-full max-w-md mb-8">
-            <ul className="space-y-2">
+            <ul id="book-list">
                 {data.books.map(book => (
                     <li key={book.id}>
                         <button 

@@ -40,39 +40,36 @@ export default function AddBook() {
 
     return (
         <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Book Name</label>
+            <form onSubmit={handleSubmit} id="add-book">
+                <div className="field">
+                    <label >Book Name</label>
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleOnChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                 </div>
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Genre</label>
+                <div className="field">
+                    <label >Genre</label>
                     <input
                         type="text"
                         name="genre"
                         value={formData.genre}
                         onChange={handleOnChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                 </div>
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                <div className="field">
+                    <label >Author</label>
                     <select
                         name="authorId"
                         value={formData.authorId}
                         onChange={handleOnChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-accent"
                     >
                         <option value="">-- Select Author --</option>
                         {loading && <option disabled>Loading Authors...</option>}
