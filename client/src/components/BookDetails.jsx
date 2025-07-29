@@ -13,7 +13,7 @@ export default function BookDetails({ id }) {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-6 text-gray-800">
+        <div id="book-details">
             <h3 className="text-2xl font-semibold text-accent mb-2">{data.book.name}</h3>
             <p className="mb-1"><span className="font-medium">Genre:</span> {data.book.genre}</p>
             <p className="mb-4"><span className="font-medium">Author:</span> {data.book.author.name}</p>
