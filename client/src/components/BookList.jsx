@@ -5,7 +5,7 @@ import { useState } from "react"
 
 export default function BookList() {
     const {loading, error, data} = useQuery(getBooksQuery)
-    const [id, setId] = useState()
+    const [id, setId] = useState(null)
 
     if(loading) {
         return <p className="text-gray-600">Loading...</p>
@@ -23,9 +23,11 @@ export default function BookList() {
         <div >
             <ul id="book-list">
                 {data.books.map(book => (
-                    <li key={book.id} onClick={() => handleBookClick(book.id)}>
-                            
-                            {book.name}
+                    <li 
+                        key={book.id} 
+                        onClick={() => handleBookClick(book.id)}
+                    >
+                        {book.name}
                     </li>
                 ))}
             </ul>
