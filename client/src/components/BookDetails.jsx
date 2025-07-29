@@ -14,12 +14,12 @@ export default function BookDetails({ id }) {
 
     return (
         <div id="book-details">
-            <h3 className="text-2xl font-semibold text-accent mb-2">{data.book.name}</h3>
-            <p className="mb-1"><span className="font-medium">Genre:</span> {data.book.genre}</p>
-            <p className="mb-4"><span className="font-medium">Author:</span> {data.book.author.name}</p>
+            <h3 >{data.book.name}</h3>
+            <p ><span className="font-medium">Genre:</span> {data.book.genre}</p>
+            <p ><span className="font-medium">Author:</span> {data.book.author.name}</p>
 
-            <p className="font-medium mb-2">Other books by this author:</p>
-            <ul className="list-disc list-inside space-y-1">
+            <p >Other books by this author:</p>
+            <ul >
                 {data.book.author.books.map((book) => (
                     <li key={book.id}>{book.name}</li>
                 ))}

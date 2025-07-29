@@ -20,15 +20,14 @@ export default function BookList() {
     }
 
     return (
-        <div className="w-full max-w-md mb-8">
+        <div >
             <ul id="book-list">
                 {data.books.map(book => (
                     <li key={book.id}>
                         <button 
                             onClick={() => handleBookClick(book.id)}
-                            className="w-full text-left px-4 py-2 bg-white rounded-md shadow hover:bg-accent hover:text-white transition-all duration-200"    
-                        >{
-                            book.name}
+                        >
+                            {book.name}
                         </button>
                     </li>
                 ))}
