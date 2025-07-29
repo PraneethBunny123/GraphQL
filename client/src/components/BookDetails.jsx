@@ -14,6 +14,7 @@ export default function BookDetails({ id }) {
 
     return (
         <div id="book-details">
+            {!data && <p>No Book was selected</p>}
             <h3 >{data.book.name}</h3>
             <p ><span className="font-medium">Genre:</span> {data.book.genre}</p>
             <p ><span className="font-medium">Author:</span> {data.book.author.name}</p>

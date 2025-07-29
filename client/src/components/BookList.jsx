@@ -23,17 +23,14 @@ export default function BookList() {
         <div >
             <ul id="book-list">
                 {data.books.map(book => (
-                    <li key={book.id}>
-                        <button 
-                            onClick={() => handleBookClick(book.id)}
-                        >
+                    <li key={book.id} onClick={() => handleBookClick(book.id)}>
+                            
                             {book.name}
-                        </button>
                     </li>
                 ))}
             </ul>
             {id && 
-                <div className="mt-6">
+                <div>
                     <BookDetails id={id}/>
                 </div>
             }

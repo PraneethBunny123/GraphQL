@@ -85,16 +85,15 @@ export default function AddBook() {
                 <button
                     type="submit"
                     disabled={addBookLoading}
-                    className="w-full bg-accent text-white py-2 rounded-md font-medium hover:bg-accent/90 transition"
                 >
                     {addBookLoading ? "Adding..." : "Add Book"}
                 </button>
             </form>
 
-            {addBookLoading && <p className="mt-4 text-gray-600">Adding book...</p>}
-            {addBookError && <p className="mt-4 text-red-600">Error: {addBookError.message}</p>}
+            {addBookLoading && <p>Adding book...</p>}
+            {addBookError && <p>Error: {addBookError.message}</p>}
             {addBookData && (
-            <p className="mt-4 text-green-600">
+            <p>
                 Book added: <strong>{addBookData.addBook.name}</strong> (ID: {addBookData.addBook.id})
             </p>
             )}
