@@ -8,11 +8,11 @@ export default function BookList() {
     const [id, setId] = useState()
 
     if(loading) {
-        return <p>Loading...</p>
+        return <p className="text-gray-600">Loading...</p>
     }
 
     if(error) {
-        return <p>Something went wrong. {error.message}</p>
+        return <p className="text-red-600">Something went wrong. {error.message}</p>
     }
 
     function handleBookClick(id) {
@@ -20,15 +20,24 @@ export default function BookList() {
     }
 
     return (
-        <div>
-            <ul>
+        <div className="w-full max-w-md mb-8">
+            <ul className="space-y-2">
                 {data.books.map(book => (
                     <li key={book.id}>
-                        <button onClick={() => handleBookClick(book.id)}>{book.name}</button>
+                        <button 
+                            onClick={() => handleBookClick(book.id)}
+                            className="w-full text-left px-4 py-2 bg-white rounded-md shadow hover:bg-accent hover:text-white transition-all duration-200"    
+                        >{
+                            book.name}
+                        </button>
                     </li>
                 ))}
             </ul>
-            {id && <BookDetails id={id}/>}
+            {id && 
+                <div className="mt-6">
+                    <BookDetails id={id}/>
+                </div>
+            }
         </div>
     )
 }
