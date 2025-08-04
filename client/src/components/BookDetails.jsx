@@ -2,6 +2,11 @@ import { useQuery } from "@apollo/client";
 import { getSingleBookQuery } from "../queries/queries";
 
 export default function BookDetails({ id }) {
+
+    const { data, loading, error } = useQuery(getSingleBookQuery, {
+        variables: { id },
+    });
+
     if (!id) {
         return (
             <div id="book-details">
@@ -9,10 +14,6 @@ export default function BookDetails({ id }) {
             </div>
         );
     }
-
-    const { data, loading, error } = useQuery(getSingleBookQuery, {
-        variables: { id },
-    });
 
     if (loading) {
         return (
